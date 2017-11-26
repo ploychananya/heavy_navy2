@@ -2,6 +2,8 @@ package com.bossbaby.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 public class MazeRenderer {
 	private Maze maze;
@@ -11,6 +13,7 @@ public class MazeRenderer {
     private Texture waterImage;
     private Texture coinImage;///////////////////////
     private Texture kol_buttonImage;
+   
     private Texture bomb_buttonImage;
     private Texture freez_buttonImage;
     private Texture kol_priceImage;

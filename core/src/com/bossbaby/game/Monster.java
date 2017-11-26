@@ -1,19 +1,21 @@
 package com.bossbaby.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
 public class Monster {
-	private static final float SPEED = (float) 0.5;
+	private float SPEED = (float) 0.5;
 	private World world;
-	//private Maze maze = world.getMaze();
 	private Vector2 position;
 	private int life;
-	public String[] MONS = new String [] {
-            "0","1","2","3","4","5",
-    };
+	private int angle=0;
+
 	
-	public Monster(int x,int y,int life,World world) {
+	public Monster(int x,int y,int life,float SPEED ,World world) {
 		this.life = life;
+		this.SPEED=SPEED;
 		this.world = world;
 		position = new Vector2(x,y);
 		
@@ -21,13 +23,16 @@ public class Monster {
 	public void update() {
     	Move();
 	}
+	public int getRotation() {
+        return angle; 
+    }
 	public Vector2 getPosition() {
         return position;    
     }
-	private int getRow() {
+	public int getRow() {
         return ((int)position.y) / WorldRenderer.BLOCK_SIZE; 
     }
-    private int getColumn() {
+    public int getColumn() {
         return ((int)position.x) / WorldRenderer.BLOCK_SIZE; 
     }
     private boolean canMoveX() {
@@ -36,7 +41,7 @@ public class Monster {
         int newCol = getColumn()+1; ///UP
         return   maze.hasWaterAt(getRow(),newCol);   
     }
-    private boolean isStopMoving() {
+    public boolean isStopMoving() {
     	Maze maze = world.getMaze();
     	int Row = getRow(); 
         int Col = getColumn(); ///UP
@@ -56,6 +61,8 @@ public class Monster {
 	public void Move(){	
 		if(canMoveX() && isStopMoving()) {
 			position.x += SPEED;
+			//sprite.setRotation(90);
+			angle =90;
 		}
 		else if(isStopMoving()) {
 			choose_y_direction();

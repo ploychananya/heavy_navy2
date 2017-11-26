@@ -19,6 +19,7 @@ public class Pacman {
 	private int currentDirection;
 	private int nextDirection;
 	//private LinkedList<DotEattenListener> listeners;
+	//private LinkedList<DotEattenListener> listeners;
 	
 	private World world;
 	private LinkedList<DotEattenListener> listeners;
