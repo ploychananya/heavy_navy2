@@ -81,6 +81,7 @@ public class WorldRenderer{
        //batch.draw(shipImg, pos_ship.x - BLOCK_SIZE/2, PacmanGame.HEIGHT - pos_ship.y - BLOCK_SIZE/2);
        //batch.end();
        font.draw(batch, "" + world.getScore(), 700, 60);
+       
        batch.end();
     }    
 

@@ -9,12 +9,14 @@ public class MouseDetector {
 	public Vector2 mouseInWorld2D;  
 	public int gun_positionX,gun_positionY;
 	public boolean clicked_onetime=false;
-	private boolean clicked_twotime=false;
+	public boolean clicked_twotime=false;
 	public boolean can_incre=false;
 	public boolean clickedKol_one_time=false;
 	public boolean clickedBomb_one_time=false;
 	public boolean clickedFreez_one_time=false;
 	public boolean clickedPasteArea=false;
+	public boolean click = false;
+	public boolean click_confirm = false;
 	int countkol=0;
 	public MouseDetector(int x,int y,World world) {
 		this.world = world;
@@ -25,14 +27,17 @@ public class MouseDetector {
     	
     	clickedDetector();
     	checkPasteArea();
-    	//System.out.println(clicked_onetime);
+
+    	//System.out.println(click_confirm);
+    	//System.out.println("                                                            ");
+    	//System.out.println(click);
     
 	}
 	public void clickedDetector() {
 		if(Clicked()) {
 			Maze maze = world.getMaze();
 			//if(countkol==0) 
-				clicked_KolButton(maze);
+			clicked_KolButton(maze);
 	    	
 	    	clicked_BombButton(maze);
 	    	
@@ -42,16 +47,16 @@ public class MouseDetector {
 	public boolean Clicked() {
 		Maze maze = world.getMaze();
 		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-			System.out.println("Clicked!");
+			//System.out.println("Clicked!");
 			return true;
 		}else return false;
 	}
 	private void updateMouse() {
 		mouseInWorld2D.x = Gdx.input.getX();
         mouseInWorld2D.y = Gdx.input.getY();
-        System.out.print(mouseInWorld2D.x);
-        System.out.print("              ");
-        System.out.println(mouseInWorld2D.y);
+        //System.out.print(mouseInWorld2D.x);
+       // System.out.print("              ");
+       // System.out.println(mouseInWorld2D.y);
         
 	}
 	public int getRow() {
@@ -64,10 +69,13 @@ public class MouseDetector {
     	if(maze.hasKol_butAt(getRow(), getColumn()) && Clicked()) {
     	
     		//world.createKolGun();
-    		System.out.println("Kol_GUN");
-    		if(countkol==0)
+    		//System.out.println("Kol_GUN");
+    		if(countkol==0) {
     			clicked_onetime=true;
-    		clickedKol_one_time=true;
+    			clicked_twotime=true;
+    			clickedKol_one_time=true;
+    		}
+    		click=true;
     		countkol++;
     			
     		return true;
@@ -84,6 +92,10 @@ public class MouseDetector {
     		return true;
     	}else return false;
     }
+    
+   
+	
+    
     public boolean clicked_FreezButton(Maze maze) {
     	if(maze.hasFreez_butAt(getRow(), getColumn()) && Clicked()) {
     		System.out.println("freez_GUN");
@@ -96,8 +108,9 @@ public class MouseDetector {
     	Maze maze = world.getMaze();
     	boolean check = clicked_onetime && Clicked(); 
     	if(maze.hasArea_weaponAt(getRow(),getColumn()) && check) {
-
-    		//clicked_onetime=false;
+    		
+    	////c_clicked_onetime=false;
+    	////c_clicked_twotime=false;
     		clickedKol_one_time=false;
     		clickedBomb_one_time=false;
     		clickedFreez_one_time=false;

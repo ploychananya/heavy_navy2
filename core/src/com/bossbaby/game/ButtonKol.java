@@ -9,7 +9,11 @@ public class ButtonKol {
 	private World world;
 	private Vector2 position;
 	//int x,y;
-	int countsequen;
+	int countkol=0;
+	int count=0;
+	boolean click = false;
+	boolean click_confirm = false;
+	
 
 	public ButtonKol(int x, int y,World world) {
 		this.world = world;
@@ -17,34 +21,54 @@ public class ButtonKol {
 	}
 	public	boolean clickedOrNot() {
 		MouseDetector mouse = world.getMouse();
-		return mouse.clickedKol_one_time;
+		return mouse.clickedKol_one_time && mouse.clicked_onetime;
 	}
 	public void update() {
 		MouseDetector mouse = world.getMouse();
+		Maze maze = world.getMaze();
 		SetPositionWithMouse(mouse);
-		//position.y+=1;
+		//clicked_KolButton(maze);
+		//position.x+=5;
+		//System.out.println(countsequen);
         
 	}
+	
 	public void SetPositionWithMouse(MouseDetector mouse) {
 		//if(clickedOrNot()) {
-		if(mouse.clickedKol_one_time) {
+		if(mouse.clickedKol_one_time && count<40) {
 			position.x=Gdx.input.getX();
 			position.y=Gdx.input.getY();
-			//mouse.clicked_onetime=false;
+			//if(mouse.checkPasteArea()&& mouse.clickedKol_one_time) {
+			count++;
+			//}
+			
 		}
 		else if(mouse.checkPasteArea()&& mouse.clickedKol_one_time) {
-			//world.createKolGun();
+		//else if(mouse.Clicked()&& !mouse.clickedKol_one_time) {
+		//else if(mouse.checkPasteArea() ) {
+		//else {	
+		//world.createKolGun();
 			//mouse.clickedKol_one_time=false;
 			//position.x=;
 			//position.y=;
 			//mouse.clicked_one_time=false;
-			
+			///
 			//if() {
+			System.out.println("ployployployyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+			
+			//if(countsequen==0) {
 			position=mouse.pastAreaPosition();
+			//count++;
+			//world.createKolGun();
+				//System.out.println("jinggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
+			//countsequen++;
+			}
+			
+			
 			//world.createKolGun();
 			//	countsequen=1;
 			///////////////////change with another gun
-		}
+		
 		
 	}
 	public Vector2 getPosition() {

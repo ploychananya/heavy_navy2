@@ -23,7 +23,8 @@ public class World {
 	    private int countloopcreatePeople=0;
 	    
 	    public float delta = 30;
-	    public float sec = 0;
+	    public float millsec = 0;
+	    public int sec = 0;
 	    ArrayList<Monster> monsters = new ArrayList<Monster>();
 	    ArrayList<People> people = new ArrayList<People>();
 	    ArrayList<ButtonKol> kolgun = new ArrayList<ButtonKol>();
@@ -80,7 +81,11 @@ public class World {
 	    }
 	    
 	    public void update(float delta) {
-	    	sec++;
+	    	millsec++;
+	    	sec=(int)millsec/60;
+	    	if(millsec==60)
+	    		millsec=0;
+	    	//System.out.println(sec);
 	    	//if(Gdx.input.isKeyPressed(Keys.SPACE)) {
 	    	//	bullet.add(new KolGun(x+4))
 	    	//}
@@ -102,9 +107,18 @@ public class World {
 	    	
 	    	genALotOfShip(5,40,5,30);
 	    	genALotOfPeople(10,40,5,20);/////specify how much you want to gen  num,life,speed,intervaltime
+	    	//for(int i=0;i<=(this.getKol().size()-1);i++) { 
+	    	if(this.getMouse().clicked_KolButton(maze) ) {
+	    		//if(this.getKol().isEmpty()) {	
+	    		if(millsec%2==0) {
+	    			
+	    				createKolGun();
+	    				System.out.print("CREATE");
+	    				System.out.println(this.getKol().size());
+	    		}
+	    	}
 	    	
-	    	createKolGun();
-	    
+	    	
 	    	
 	 	    callAllShip();
 	 	    callAllPeople();//////call for building
@@ -134,11 +148,11 @@ public class World {
 	        }
 		}
 		public void genALotOfShip(int NumberOfMonsterThatYouWant,int life,float speed,int interval) {
-			if(sec%interval==0 && countloopcreateShip<NumberOfMonsterThatYouWant) {
+			if(millsec%interval==0 && countloopcreateShip<NumberOfMonsterThatYouWant) {
 	    		createShip(life,speed);
 	    		countloopcreateShip++;
 	    	}
-	    	else if(sec%delaytime==0){
+	    	else if(millsec%delaytime==0){
 	    		countloopcreateShip=0;
 	    	}
 		}
@@ -154,11 +168,11 @@ public class World {
 			monsters.add(ship);
 		}
 		public void genALotOfPeople(int NumberOfMonsterThatYouWant,int life,float speed,int interval) {
-			if(sec%interval==0 && countloopcreatePeople<NumberOfMonsterThatYouWant) {
+			if(millsec%interval==0 && countloopcreatePeople<NumberOfMonsterThatYouWant) {
 	    		createPeople(life,speed);
 	    		countloopcreatePeople++;
 	    	}
-	    	else if(sec%delaytime==0){
+	    	else if(millsec%delaytime==0){
 	    		countloopcreatePeople=0;
 	    	}
 		}
