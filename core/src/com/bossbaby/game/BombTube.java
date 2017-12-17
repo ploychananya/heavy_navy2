@@ -34,8 +34,8 @@ public class BombTube{
 			count_degree++ ;
 		}
 		public void CreatBulletInMap() {
-			if(count_degree%15==0) {
-				bombBullet= new BombBullet((int)position.x,(int)position.y,rad,1,world);
+			if(count_degree%25==0) {
+				bombBullet= new BombBullet((int)position.x,(int)position.y,rad,3,world);
 				world.bombbullet.add(bombBullet);
 			}
 		}

@@ -55,7 +55,7 @@ public class World {
 	        maze = new Maze();
 	        mouse = new MouseDetector(640,320,this);
 	        score = 10; // start coin =10
-	        quata = 15;  // can go in the castle only 15 if more than this will loss
+	        quata = 10;  // can go in the castle only 15 if more than this will loss
 	        time = 180; // sec = 3 minute 
 	    }   
 	    public double getScore() {
@@ -144,20 +144,20 @@ public class World {
 	    		genALotOfPeople(12,7,(float) 0.5,60);
 	    	}
 	    	else if(time>=120 && time<150) {
-	    		genALotOfShip(2,30,(float) 1.2,100);
-	    		genALotOfPeople(10,15,1,60);
+	    		genALotOfShip(5,50,(float) 1.2,100);
+	    		genALotOfPeople(10,15,(float) 1,60);
 	    	}else if(time>=90 && time<120) {
-	    		genALotOfShip(1,30,(float) 1.2,100);
-	    		genALotOfPeople(20,30,1,100);
+	    		genALotOfShip(8,80,(float) 1.7,100);
+	    		genALotOfPeople(20,40,(float) 1.5,100);
 	    	}else if(time>=60 && time<90) {
-	    		genALotOfShip(4,45,(float) 1.8,100);
-	    		genALotOfPeople(15,30,1,100);
+	    		genALotOfShip(10,65,(float) 2.2,100);
+	    		genALotOfPeople(30,30,(float) 2,100);
 	    	}else if(time>=30 && time<60) {
-	    		//genALotOfShip(4,45,(float) 1.2,100);
-	    		genALotOfPeople(40,30,1,120);
+	    		genALotOfShip(15,65,(float) 2.7,100);
+	    		genALotOfPeople(30,30,(float) 2.5,130);
 	    	}else if(time>=0 && time<30) {
-	    		genALotOfShip(8,55,(float) 1.2,100);
-	    		genALotOfPeople(30,30,1,100);
+	    		genALotOfShip(20,75,(float) 3,140);
+	    		genALotOfPeople(40,30,3,100);
 	    	}
 		}
 
@@ -243,7 +243,7 @@ public class World {
 		}
 
 		public void CountDownTime() {
-			if(millsec%60==0) {
+			if(millsec%60==0&&time!=0) {
 	    		time--;
 	    	}
 		}
@@ -312,7 +312,7 @@ public class World {
 		
 		
 		public void genALotOfShip(int NumberOfMonsterThatYouWant,int life,float speed,int interval) {
-			if(millsec%interval==0 && countloopcreateShip<NumberOfMonsterThatYouWant) {
+			if(millsec%interval==0 && countloopcreateShip<NumberOfMonsterThatYouWant&& time>=0) {
 	    		createShip(life,speed);
 	    		countloopcreateShip++;
 	    	}
@@ -332,7 +332,7 @@ public class World {
 			monsters.add(ship);
 		}
 		public void genALotOfPeople(int NumberOfMonsterThatYouWant,int life,float speed,int interval) {
-			if(millsec%interval==0 && countloopcreatePeople<NumberOfMonsterThatYouWant) {
+			if(millsec%interval==0 && countloopcreatePeople<NumberOfMonsterThatYouWant&&time>=0) {
 	    		createPeople(life,speed);
 	    		countloopcreatePeople++;
 	    	}

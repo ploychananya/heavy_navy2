@@ -33,7 +33,7 @@ public class FreezTube{
 		count_degree++ ;
 	}
 	public void CreatBulletInMap() {
-		if(count_degree%15==0) {
+		if(count_degree%50==0) {
 			freezBullet= new FreezBullet((int)position.x,(int)position.y,rad,1,world);
 			world.freezbullet.add(freezBullet);
 		}

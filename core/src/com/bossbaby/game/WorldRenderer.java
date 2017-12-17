@@ -187,7 +187,7 @@ public class WorldRenderer{
     }
 
 	public void DrawWinOrLossImg(SpriteBatch batch) {
-		if(world.time<=0 && world.quata>0) {
+		if(world.time<=0 && world.quata>0 && world.getMonster().isEmpty() && world.getPeople().isEmpty()) {
 			 batch.draw(winImg, 0,0, HeavayNavyGame.WIDTH, HeavayNavyGame.HEIGHT); 
 		   }else if(world.quata<=0){
 			   batch.draw(lossImg,0,0, HeavayNavyGame.WIDTH, HeavayNavyGame.HEIGHT); 

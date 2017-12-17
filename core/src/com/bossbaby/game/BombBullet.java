@@ -37,7 +37,7 @@ public class BombBullet extends BombTube {
        		//life_monster = (int) world.getMonster().get(i).life;
        		//index_current_monster=i;
        		
-       		if(Math.abs(position.x-position_x_monster)<=15 && Math.abs(position.y-position_y_monster)<=15) {
+       		if(Math.abs(position.x-position_x_monster)<=35 && Math.abs(position.y-position_y_monster)<=35) {
        			shoot=1;
        			world.getMonster().get(i).life -=this.damage;
        			break;
@@ -55,7 +55,7 @@ public class BombBullet extends BombTube {
        		position_x_people= (int) world.getPeople().get(i).getPosition().x;
        		position_y_people= (int) world.getPeople().get(i).getPosition().y;
     
-       		if(Math.abs(position.x-position_x_people)<=15 && Math.abs(position.y-position_y_people)<=15) {
+       		if(Math.abs(position.x-position_x_people)<=20 && Math.abs(position.y-position_y_people)<=20) {
        			shoot=1;
        			world.getPeople().get(i).life -=this.damage;  //////////Depenon Damage
        			break;

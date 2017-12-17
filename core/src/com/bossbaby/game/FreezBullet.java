@@ -39,12 +39,12 @@ public class FreezBullet extends FreezTube {
        		//life_monster = (int) world.getMonster().get(i).life;
        		//index_current_monster=i;
        		
-       		if(Math.abs(position.x-position_x_monster)<=15 && Math.abs(position.y-position_y_monster)<=15) {
+       		if(Math.abs(position.x-position_x_monster)<=35 && Math.abs(position.y-position_y_monster)<=35) {
        			shoot=1;
        			world.getMonster().get(i).life -=this.damage;
        			SPEED_Mons = world.getMonster().get(i).SPEED;
-       			if((SPEED_Mons-0.2) !=0)
-       				world.getMonster().get(i).SPEED -=0.20;
+       			if(!((SPEED_Mons-0.1) <=0))
+       				world.getMonster().get(i).SPEED -=0.10;
        			break;
        			
        		}
@@ -60,12 +60,12 @@ public class FreezBullet extends FreezTube {
        		position_x_people= (int) world.getPeople().get(i).getPosition().x;
        		position_y_people= (int) world.getPeople().get(i).getPosition().y;
     
-       		if(Math.abs(position.x-position_x_people)<=15 && Math.abs(position.y-position_y_people)<=15) {
+       		if(Math.abs(position.x-position_x_people)<=20 && Math.abs(position.y-position_y_people)<=20) {
        			shoot=1;
        			world.getPeople().get(i).life -=this.damage;  //////////Depenon Damage
        			SPEED_People = world.getPeople().get(i).SPEED;
-       			if((SPEED_People-0.2) !=0)
-       				world.getPeople().get(i).SPEED -=0.20;
+       			if(!((SPEED_People-0.1) <=0))
+       				world.getPeople().get(i).SPEED -=0.10;
        			break;
        		}
        		
