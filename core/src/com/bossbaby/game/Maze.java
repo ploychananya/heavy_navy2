@@ -5,12 +5,12 @@ public class Maze {
     private int width;
     private boolean [][] hasDots;
 	private String[] MAP = new String [] {
-            "ttttgggggggggggggggggggttttttttg",
-            "gtttgtgggggwwwwwwwwwwggggggggggg",
-            "ggtttgtggwwwwww......wwwgtttsttg",
-            "gwwwwwwwwwwwww.ppppp..wwwww.p.ww",
-            "wwwwwwwwwwwww.pppp.ppp.www.pp..w",
-            "......wwwwwww.ppp.w.ppp.ww.pp..w",
+            "ttttggggggggTggggggggggttttttttg",
+            "gtttgtgggggwwwwwwwwwwgggggQggggg",
+            "ggtttgtggwwwwww.......wwgtttsttg",
+            "gwwwwwwwwwwwww.pppppp.wwwww.p.wg",
+            "wwwwwwwwwwwww.pppp.ppp.www.pp.wt",
+            "......wwwwwww.ppp.w.ppp.ww.pp.wt",
             "ppppp.wwwwwww.pp.ww.ppp.ww.pp.wg",
             "pppppp........pp.www.pp.ww.pp.wg",
             "...ppppppppppppp.www.ppp..ppp.wg",
@@ -55,6 +55,12 @@ public class Maze {
     
     public boolean hasWaterAt(int r, int c) {
         return MAP[r].charAt(c) == 'p';
+    }
+    public boolean hasTimeAt(int r, int c) {
+        return MAP[r].charAt(c) == 'T';
+    }
+    public boolean hasQuataAt(int r, int c) {
+        return MAP[r].charAt(c) == 'Q';
     }
     public boolean hasSandAt(int r, int c) {
         return MAP[r].charAt(c) == '.';

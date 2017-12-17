@@ -23,6 +23,9 @@ public class MazeRenderer {
     private Texture treeImage;
     private Texture grassImage;
     private Texture castleImage;
+    
+    private Texture quataImage;
+    private Texture timeImage;
     World world;
  
     public MazeRenderer(SpriteBatch batch, Maze maze) {
@@ -40,6 +43,8 @@ public class MazeRenderer {
         treeImage = new Texture("trees.png");
         grassImage = new Texture("green.png");
         castleImage = new Texture("castle.png");
+        quataImage = new Texture("quata_canuse.png");
+        timeImage = new Texture("time.png");
         
         this.maze = maze;
         this.batch = batch;
@@ -52,7 +57,7 @@ public class MazeRenderer {
         for(int r = 0; r < maze.getHeight(); r++) {
             for(int c = 0; c < maze.getWidth(); c++) {
                 int x = c * WorldRenderer.BLOCK_SIZE;
-                int y = PacmanGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE;
+                int y = HeavayNavyGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE;
          
                 if(maze.hasSandAt(r, c)) {
                     batch.draw(sandImage, x, y);
@@ -82,9 +87,13 @@ public class MazeRenderer {
                     batch.draw(grassImage, x, y);
                 }else if(maze.hasCastleAt(r, c)) {
                     batch.draw(castleImage, x, y);
+                }else if(maze.hasQuataAt(r, c)) {
+                    batch.draw(quataImage, x, y);
+                }else if(maze.hasTimeAt(r, c)) {
+                    batch.draw(timeImage, x, y);
                 }
             }
         }
-       // this.batch.end();
+       
     }
 }

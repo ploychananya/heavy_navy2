@@ -3,14 +3,14 @@ package com.bossbaby.game.desktop;
 //import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.bossbaby.game.PacmanGame;
+import com.bossbaby.game.HeavayNavyGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = PacmanGame.WIDTH;
-        config.height = PacmanGame.HEIGHT;
-		new LwjglApplication(new PacmanGame(), config);
+		config.width = HeavayNavyGame.WIDTH;
+        config.height = HeavayNavyGame.HEIGHT;
+		new LwjglApplication(new HeavayNavyGame(), config);
 	}
 }
 /*

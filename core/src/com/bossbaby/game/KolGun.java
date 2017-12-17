@@ -61,7 +61,7 @@ public class KolGun {
 	public void update (float delta) {
 		Actions.addAction(Actions.moveTo(500, 500, 1));
 		y+= SPEED * delta;
-		if(y>PacmanGame.HEIGHT || x>PacmanGame.WIDTH) {
+		if(y>HeavayNavyGame.HEIGHT || x>HeavayNavyGame.WIDTH) {
 			remove=true;
 		}
 	}

@@ -3,14 +3,18 @@ package com.bossbaby.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Monster {
-	private float SPEED = (float) 0.5;
+	public float SPEED ;
 	private World world;
 	private Vector2 position;
-	private int life;
+	public int life;
 	private int angle=0;
+	private int position_x_bullet;
+	//public Sprite batch;
+	private int position_y_bullet;
 
 	
 	public Monster(int x,int y,int life,float SPEED ,World world) {
@@ -118,6 +122,16 @@ public class Monster {
 		}else if(CountCol_Down<CountCol_Up){
 			position.y += SPEED;
 		}
+	}
+	public void TouchKolBullet() {
+		for(int i=0;i<=(world.getKolBullet().size()-1);i++) {
+       		position_x_bullet= (int) world.getKolBullet().get(i).getPosition().x;
+       		position_y_bullet= (int) world.getKolBullet().get(i).getPosition().y;
+       		
+       		if(position_x_bullet==position.x && position_y_bullet==position.y ) {
+       			this.life-=1;
+       		}
+       	}
 	}
 	
 }

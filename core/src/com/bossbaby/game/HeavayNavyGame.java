@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
-public class PacmanGame extends Game {
+public class HeavayNavyGame extends Game {
 //public class PacmanGame extends ApplicationAdapter{
 	public SpriteBatch batch;
 	public static final int HEIGHT = 640;
